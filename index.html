@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adiron — Field Service Management for Contractors</title>
+  <meta name="description" content="Jobs, crew management, estimates, invoices, equipment tracking — all in one place. Built for field service contractors.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .hero-gradient { background: linear-gradient(135deg, #111827 0%, #1f2937 60%, #111827 100%); }
+    .yellow-glow { box-shadow: 0 0 40px rgba(245, 158, 11, 0.15); }
+    .feature-card:hover { transform: translateY(-4px); transition: transform 0.2s ease; }
+    .feature-card { transition: transform 0.2s ease; }
+    .nav-link { position: relative; }
+    .nav-link::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background: #f59e0b; transition: width 0.2s ease; }
+    .nav-link:hover::after { width: 100%; }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .fade-in { animation: fadeInUp 0.6s ease forwards; }
+    .fade-in-delay-1 { animation: fadeInUp 0.6s ease 0.1s forwards; opacity: 0; }
+    .fade-in-delay-2 { animation: fadeInUp 0.6s ease 0.2s forwards; opacity: 0; }
+    .fade-in-delay-3 { animation: fadeInUp 0.6s ease 0.3s forwards; opacity: 0; }
+  </style>
+</head>
+<body class="bg-white text-gray-900 font-sans">
+
+  <!-- NAV -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-gray-900 bg-opacity-95 backdrop-blur border-b border-gray-800">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#" class="text-yellow-400 font-bold text-2xl tracking-tight">Adiron</a>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#features" class="nav-link text-gray-300 hover:text-white text-sm font-medium">Features</a>
+        <a href="#how-it-works" class="nav-link text-gray-300 hover:text-white text-sm font-medium">How It Works</a>
+        <a href="#pricing" class="nav-link text-gray-300 hover:text-white text-sm font-medium">Pricing</a>
+        <a href="https://app.getadiron.com/login/" class="text-gray-300 hover:text-white text-sm font-medium">Sign In</a>
+        <a href="https://app.getadiron.com/accounts/register/" class="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold text-sm px-5 py-2 rounded-lg transition-colors">
+          Start Free Trial
+        </a>
+      </div>
+      <!-- Mobile menu button -->
+      <button onclick="toggleMobileMenu()" class="md:hidden text-gray-300 hover:text-white">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-gray-900 border-t border-gray-800 px-6 py-4 space-y-3">
+      <a href="#features" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-white text-sm font-medium py-2">Features</a>
+      <a href="#how-it-works" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-white text-sm font-medium py-2">How It Works</a>
+      <a href="#pricing" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-white text-sm font-medium py-2">Pricing</a>
+      <a href="https://app.getadiron.com/login/" class="block text-gray-300 hover:text-white text-sm font-medium py-2">Sign In</a>
+      <a href="https://app.getadiron.com/accounts/register/" class="block bg-yellow-400 hover:bg-yellow-500 text-black font-semibold text-sm px-5 py-2.5 rounded-lg text-center transition-colors">
+        Start Free Trial — No Card Required
+      </a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero-gradient min-h-screen flex items-center pt-16">
+    <div class="max-w-6xl mx-auto px-6 py-24 text-center">
+      <div class="inline-block bg-yellow-400 bg-opacity-10 border border-yellow-400 border-opacity-30 text-yellow-400 text-xs font-semibold px-4 py-1.5 rounded-full mb-6 fade-in">
+        Built for field service contractors
+      </div>
+      <h1 class="text-5xl md:text-7xl font-black text-white leading-tight mb-6 fade-in-delay-1">
+        From first call<br>
+        <span class="text-yellow-400">to final invoice.</span>
+      </h1>
+      <p class="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto mb-10 fade-in-delay-2">
+        Jobs, crew management, estimates, invoices, equipment tracking — all in one place.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in-delay-3">
+        <a href="https://app.getadiron.com/accounts/register/"
+          class="bg-yellow-400 hover:bg-yellow-500 text-black font-bold text-lg px-8 py-4 rounded-xl transition-colors yellow-glow">
+          Start Your Free Trial
+        </a>
+        <a href="#how-it-works"
+          class="bg-white bg-opacity-10 hover:bg-opacity-20 text-white font-semibold text-lg px-8 py-4 rounded-xl border border-white border-opacity-20 transition-colors">
+          See How It Works
+        </a>
+      </div>
+      <p class="text-gray-500 text-sm mt-4">14-day free trial · No credit card required · Cancel anytime</p>
+
+      <!-- Hero mockup placeholder -->
+      <div class="mt-16 max-w-4xl mx-auto bg-gray-800 rounded-2xl border border-gray-700 overflow-hidden yellow-glow">
+        <div class="bg-gray-900 px-4 py-3 flex items-center gap-2 border-b border-gray-700">
+          <div class="w-3 h-3 rounded-full bg-red-500"></div>
+          <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+          <div class="w-3 h-3 rounded-full bg-green-500"></div>
+          <div class="flex-1 bg-gray-800 rounded mx-4 px-3 py-1 text-gray-500 text-xs text-center">app.getadiron.com</div>
+        </div>
+        <div class="p-6 md:p-10">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <div class="bg-gray-700 rounded-xl p-4">
+              <p class="text-gray-400 text-xs mb-1">Active Jobs</p>
+              <p class="text-white text-3xl font-bold">12</p>
+              <p class="text-green-400 text-xs mt-1">↑ 3 this week</p>
+            </div>
+            <div class="bg-gray-700 rounded-xl p-4">
+              <p class="text-gray-400 text-xs mb-1">Outstanding Balance</p>
+              <p class="text-yellow-400 text-3xl font-bold">$24,800</p>
+              <p class="text-gray-400 text-xs mt-1">4 invoices pending</p>
+            </div>
+            <div class="bg-gray-700 rounded-xl p-4">
+              <p class="text-gray-400 text-xs mb-1">Revenue (YTD)</p>
+              <p class="text-green-400 text-3xl font-bold">$187,400</p>
+              <p class="text-gray-400 text-xs mt-1">On track for goals</p>
+            </div>
+          </div>
+          <div class="bg-gray-700 rounded-xl p-4">
+            <p class="text-white font-semibold text-sm mb-3">Upcoming Jobs</p>
+            <div class="space-y-2">
+              <div class="flex items-center justify-between bg-gray-600 rounded-lg px-3 py-2">
+                <div>
+                  <p class="text-white text-sm font-medium">Anderson Parking Lot</p>
+                  <p class="text-gray-400 text-xs">McKinney, TX · Mar 30</p>
+                </div>
+                <span class="bg-blue-900 text-blue-300 text-xs font-semibold px-2 py-1 rounded">In Progress</span>
+              </div>
+              <div class="flex items-center justify-between bg-gray-600 rounded-lg px-3 py-2">
+                <div>
+                  <p class="text-white text-sm font-medium">Thompson Pool Deck</p>
+                  <p class="text-gray-400 text-xs">Garland, TX · Apr 4</p>
+                </div>
+                <span class="bg-yellow-900 text-yellow-300 text-xs font-semibold px-2 py-1 rounded">Scheduled</span>
+              </div>
+              <div class="flex items-center justify-between bg-gray-600 rounded-lg px-3 py-2">
+                <div>
+                  <p class="text-white text-sm font-medium">Williams Office Curb</p>
+                  <p class="text-gray-400 text-xs">Frisco, TX · Apr 7</p>
+                </div>
+                <span class="bg-yellow-900 text-yellow-300 text-xs font-semibold px-2 py-1 rounded">Scheduled</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF BAR -->
+  <section class="bg-gray-900 border-y border-gray-800 py-6">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <p class="text-gray-500 text-sm font-medium">Trusted by contractors across the US — window cleaning, landscaping, concrete, HVAC, and more</p>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="features" class="py-24 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-4">Everything your business needs</h2>
+        <p class="text-xl text-gray-500 max-w-2xl mx-auto">One platform to manage your entire operation — from the office or the job site.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Job Management -->
+        <div class="feature-card bg-gray-50 rounded-2xl p-6 border border-gray-100">
+          <div class="w-12 h-12 bg-yellow-100 rounded-xl flex items-center justify-center mb-4 text-2xl">🏗️</div>
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Job Management</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">Track every job from lead to completion. Pipeline view, status updates, tasks, notes, photos, and documents — all in one place.</p>
+          <ul class="mt-4 space-y-1">
+            <li class="text-sm text-gray-500 flex items-center gap-2"><span class="text-yellow-500">✓</span> Full job lifecycle tracking</li>
+            <li class="text-sm text-gray-500 flex items-center gap-2"><span class="text-yellow-500">✓</span> Tasks and to-do lists</li>
+            <li class="text-sm text-gray-500 flex items-center gap-2"><span class="text-yellow-500">✓</span> Photo and document uploads</li>
+            <li class="text-sm text-gray-500 flex items-center gap-2"><span class="text-yellow-500">✓</span> Calendar view with weather</li>
+          </ul>
+        </div>
+
+        <!-- Crew & Dispatch -->
+        <div class="feature-card bg-gray-50 rounded-2xl p-6 border border-gray-100">
+          <div class="w-12 h-12 bg-yellow-100 rounded-xl flex items-center justify-center mb-4 text-2xl">👷</div>
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Crew & Dispatch</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">Know where your crew is at all times. Clock in/out, check-ins, dispatch board, and time tracking all built in.</p>
+          <ul class="mt-4 space-y-1">
+            <li class="text-sm text-gray-500 flex items-center gap-2"><span class="text-yellow-500">✓</span> Real-time crew status</li>
+            <li class="text-sm text-gray-500 flex items-center gap-2"><span class="text-yellow-500">✓</span> Clock in/out tracking</li>
+            <li class="text-sm text-gray-500 flex items-center gap-2"><span class="text-yellow-500">✓</span> Dispatch board by job site</li>
+            <li class="text-sm text-gray-500 flex items-center gap-2"><span class="text-yellow-500">✓</span> Payroll-ready time logs</li>
+          </ul>
+        </div>
+
+        <!-- Estimates -->
+        <div class="feature-card bg-gray-50 rounded-2xl p-6 border border-gray-100">
+          <div class="w-12 h-12 bg-yellow-100 rounded-xl flex items-center justify-center mb-4 text-2xl">📋</div>
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Estimates</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">Build professional estimates in minutes. Send to clients with one click. They can approve or reject online — no back and forth.</p>
+          <ul class="mt-4 space-y-1">
+            <li class="text-sm text-gray-500 flex items-center gap-2"><span class="text-yellow-500">✓</span> Built-in material calculators</li>
+            <li class="text-sm text-gray-500 flex items-center gap-2"><span class="text-yellow-500">✓</span> Client online approval</li>
+            <li class="text-sm text-gray-500 flex items-center gap-2"><span class="text-yellow-500">✓</span> PDF download</li>
+            <li class="text-sm text-gray-500 flex items-center gap-2"><span class="text-yellow-500">✓</span> Auto-advance job status</li>
+          </ul>
+        </div>
+
+        <!-- Invoicing -->
+        <div class="feature-card bg-gray-50 rounded-2xl p-6 border border-gray-100">
+          <div class="w-12 h-12 bg-yellow-100 rounded-xl flex items-center justify-center mb-4 text-2xl">💰</div>
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Invoicing</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">Send professional invoices straight from the job. Track payments, record deposits, and know exactly who owes you money.</p>
+          <ul class="mt-4 space-y-1">
+            <li class="text-sm text-gray-500 flex items-center gap-2"><span class="text-yellow-500">✓</span> Professional PDF invoices</li>
+            <li class="text-sm text-gray-500 flex items-center gap-2"><span class="text-yellow-500">✓</span> Payment tracking</li>
+            <li class="text-sm text-gray-500 flex items-center gap-2"><span class="text-yellow-500">✓</span> Partial payments & deposits</li>
+            <li class="text-sm text-gray-500 flex items-center gap-2"><span class="text-yellow-500">✓</span> Auto payment receipts</li>
+          </ul>
+        </div>
+
+        <!-- Equipment & Vehicles -->
+        <div class="feature-card bg-gray-50 rounded-2xl p-6 border border-gray-100">
+          <div class="w-12 h-12 bg-yellow-100 rounded-xl flex items-center justify-center mb-4 text-2xl">🚛</div>
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Equipment & Vehicles</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">Track where your equipment and vehicles are. Schedule maintenance, log service history, and get suggestions from your crew.</p>
+          <ul class="mt-4 space-y-1">
+            <li class="text-sm text-gray-500 flex items-center gap-2"><span class="text-yellow-500">✓</span> Location tracking by job</li>
+            <li class="text-sm text-gray-500 flex items-center gap-2"><span class="text-yellow-500">✓</span> Maintenance scheduling</li>
+            <li class="text-sm text-gray-500 flex items-center gap-2"><span class="text-yellow-500">✓</span> Service history logs</li>
+            <li class="text-sm text-gray-500 flex items-center gap-2"><span class="text-yellow-500">✓</span> Crew suggestion inbox</li>
+          </ul>
+        </div>
+
+        <!-- Reports -->
+        <div class="feature-card bg-gray-50 rounded-2xl p-6 border border-gray-100">
+          <div class="w-12 h-12 bg-yellow-100 rounded-xl flex items-center justify-center mb-4 text-2xl">📈</div>
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Reports</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">Know your numbers. Revenue by period, job profitability, payroll summaries, and outstanding balances at a glance.</p>
+          <ul class="mt-4 space-y-1">
+            <li class="text-sm text-gray-500 flex items-center gap-2"><span class="text-yellow-500">✓</span> Revenue tracking</li>
+            <li class="text-sm text-gray-500 flex items-center gap-2"><span class="text-yellow-500">✓</span> Payroll reports</li>
+            <li class="text-sm text-gray-500 flex items-center gap-2"><span class="text-yellow-500">✓</span> Job profitability</li>
+            <li class="text-sm text-gray-500 flex items-center gap-2"><span class="text-yellow-500">✓</span> Period filtering</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how-it-works" class="py-24 bg-gray-900">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-black text-white mb-4">Up and running in minutes</h2>
+        <p class="text-xl text-gray-400 max-w-2xl mx-auto">No training required. No IT setup. Just sign up and start managing your business.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-yellow-400 rounded-2xl flex items-center justify-center text-black font-black text-2xl mx-auto mb-6">1</div>
+          <h3 class="text-xl font-bold text-white mb-3">Create your account</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Sign up in 60 seconds. Add your company info, logo, and team members. No credit card needed to start.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-yellow-400 rounded-2xl flex items-center justify-center text-black font-black text-2xl mx-auto mb-6">2</div>
+          <h3 class="text-xl font-bold text-white mb-3">Add your first job</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Add a client, create a job, assign your crew. Send an estimate directly from the job and get client approval online.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-yellow-400 rounded-2xl flex items-center justify-center text-black font-black text-2xl mx-auto mb-6">3</div>
+          <h3 class="text-xl font-bold text-white mb-3">Run your business</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Track crew hours, dispatch teams, send invoices, and watch your revenue grow — all from your phone or desktop.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BUILT FOR CONTRACTORS BANNER -->
+  <section class="py-16 bg-yellow-400">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h2 class="text-3xl md:text-4xl font-black text-black mb-4">Built for the field. Works on any device.</h2>
+      <p class="text-black text-opacity-70 text-lg max-w-2xl mx-auto">Whether you're in the office or on the job site, Adiron works on your phone, tablet, or desktop. No app download required.</p>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing" class="py-24 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-4">Simple, transparent pricing</h2>
+        <p class="text-xl text-gray-500 max-w-2xl mx-auto">Start free for 14 days. No credit card required. Cancel anytime.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+
+        <!-- Starter -->
+        <div class="bg-white rounded-2xl border-2 border-gray-200 p-8 flex flex-col">
+          <div class="mb-6">
+            <h3 class="text-xl font-bold text-gray-900 mb-1">Starter</h3>
+            <div class="flex items-end gap-1 mb-3">
+              <span class="text-5xl font-black text-gray-900">$79</span>
+              <span class="text-gray-500 mb-2">/month</span>
+            </div>
+            <p class="text-sm text-gray-500">Perfect for solo operators and small teams getting organized.</p>
+          </div>
+          <ul class="space-y-3 mb-8 flex-1">
+            <li class="flex items-start gap-2 text-sm text-gray-700"><span class="text-yellow-500 mt-0.5 flex-shrink-0">✓</span> Up to 2 users</li>
+            <li class="flex items-start gap-2 text-sm text-gray-700"><span class="text-yellow-500 mt-0.5 flex-shrink-0">✓</span> Jobs & client management</li>
+            <li class="flex items-start gap-2 text-sm text-gray-700"><span class="text-yellow-500 mt-0.5 flex-shrink-0">✓</span> Estimates with material calculators</li>
+            <li class="flex items-start gap-2 text-sm text-gray-700"><span class="text-yellow-500 mt-0.5 flex-shrink-0">✓</span> Professional invoicing</li>
+            <li class="flex items-start gap-2 text-sm text-gray-700"><span class="text-yellow-500 mt-0.5 flex-shrink-0">✓</span> Equipment & vehicle tracking</li>
+            <li class="flex items-start gap-2 text-sm text-gray-700"><span class="text-yellow-500 mt-0.5 flex-shrink-0">✓</span> Basic reports</li>
+            <li class="flex items-start gap-2 text-sm text-gray-400"><span class="text-gray-300 mt-0.5 flex-shrink-0">✗</span> Dispatch</li>
+            <li class="flex items-start gap-2 text-sm text-gray-400"><span class="text-gray-300 mt-0.5 flex-shrink-0">✗</span> Payroll reports</li>
+          </ul>
+          <a href="https://app.getadiron.com/accounts/register/"
+            class="block text-center bg-gray-900 hover:bg-gray-800 text-white font-semibold py-3 rounded-xl transition-colors">
+            Start Free Trial
+          </a>
+        </div>
+
+        <!-- Pro -->
+        <div class="bg-gray-900 rounded-2xl border-2 border-yellow-400 p-8 flex flex-col relative">
+          <div class="absolute -top-4 left-1/2 -translate-x-1/2">
+            <span class="bg-yellow-400 text-black text-xs font-black px-4 py-1.5 rounded-full tracking-wide">MOST POPULAR</span>
+          </div>
+          <div class="mb-6">
+            <h3 class="text-xl font-bold text-white mb-1">Pro</h3>
+            <div class="flex items-end gap-1 mb-3">
+              <span class="text-5xl font-black text-white">$149</span>
+              <span class="text-gray-400 mb-2">/month</span>
+            </div>
+            <p class="text-sm text-gray-400">For growing crews who need the full toolkit to scale.</p>
+          </div>
+          <ul class="space-y-3 mb-8 flex-1">
+            <li class="flex items-start gap-2 text-sm text-gray-300"><span class="text-yellow-400 mt-0.5 flex-shrink-0">✓</span> Up to 10 users</li>
+            <li class="flex items-start gap-2 text-sm text-gray-300"><span class="text-yellow-400 mt-0.5 flex-shrink-0">✓</span> Everything in Starter</li>
+            <li class="flex items-start gap-2 text-sm text-gray-300"><span class="text-yellow-400 mt-0.5 flex-shrink-0">✓</span> Dispatch board</li>
+            <li class="flex items-start gap-2 text-sm text-gray-300"><span class="text-yellow-400 mt-0.5 flex-shrink-0">✓</span> Payroll reports</li>
+            <li class="flex items-start gap-2 text-sm text-gray-300"><span class="text-yellow-400 mt-0.5 flex-shrink-0">✓</span> Full reports & analytics</li>
+            <li class="flex items-start gap-2 text-sm text-gray-300"><span class="text-yellow-400 mt-0.5 flex-shrink-0">✓</span> Priority support</li>
+          </ul>
+          <a href="https://app.getadiron.com/accounts/register/"
+            class="block text-center bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3 rounded-xl transition-colors">
+            Start Free Trial
+          </a>
+        </div>
+
+        <!-- Business -->
+        <div class="bg-white rounded-2xl border-2 border-gray-200 p-8 flex flex-col">
+          <div class="mb-6">
+            <h3 class="text-xl font-bold text-gray-900 mb-1">Business</h3>
+            <div class="flex items-end gap-1 mb-3">
+              <span class="text-5xl font-black text-gray-900">$229</span>
+              <span class="text-gray-500 mb-2">/month</span>
+            </div>
+            <p class="text-sm text-gray-500">For larger operations that need unlimited team members.</p>
+          </div>
+          <ul class="space-y-3 mb-8 flex-1">
+            <li class="flex items-start gap-2 text-sm text-gray-700"><span class="text-yellow-500 mt-0.5 flex-shrink-0">✓</span> Unlimited users</li>
+            <li class="flex items-start gap-2 text-sm text-gray-700"><span class="text-yellow-500 mt-0.5 flex-shrink-0">✓</span> Everything in Pro</li>
+            <li class="flex items-start gap-2 text-sm text-gray-700"><span class="text-yellow-500 mt-0.5 flex-shrink-0">✓</span> Dedicated support</li>
+            <li class="flex items-start gap-2 text-sm text-gray-700"><span class="text-yellow-500 mt-0.5 flex-shrink-0">✓</span> Early access to new features</li>
+          </ul>
+          <a href="https://app.getadiron.com/accounts/register/"
+            class="block text-center bg-gray-900 hover:bg-gray-800 text-white font-semibold py-3 rounded-xl transition-colors">
+            Start Free Trial
+          </a>
+        </div>
+
+      </div>
+      <p class="text-center text-gray-400 text-sm mt-8">All plans include a 14-day free trial. No credit card required. Cancel anytime.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-24 bg-gray-50">
+    <div class="max-w-3xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-black text-gray-900 mb-4">Common questions</h2>
+      </div>
+      <div class="space-y-4">
+        <details class="bg-white rounded-xl border border-gray-200 overflow-hidden group">
+          <summary class="px-6 py-4 font-semibold text-gray-900 cursor-pointer flex items-center justify-between list-none">
+            Do I need a credit card to start?
+            <span class="text-yellow-500 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="px-6 pb-4 text-gray-600 text-sm leading-relaxed">
+            No. You get a full 14-day free trial with no credit card required. You only need to add payment info if you decide to continue after your trial ends.
+          </div>
+        </details>
+        <details class="bg-white rounded-xl border border-gray-200 overflow-hidden group">
+          <summary class="px-6 py-4 font-semibold text-gray-900 cursor-pointer flex items-center justify-between list-none">
+            What kind of contractors use Adiron?
+            <span class="text-yellow-500 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="px-6 pb-4 text-gray-600 text-sm leading-relaxed">
+            Any field service contractor — concrete, window cleaning, landscaping, HVAC, plumbing, electrical, painting, pressure washing, and more. If you manage jobs, crew, and invoices, Adiron works for you.
+          </div>
+        </details>
+        <details class="bg-white rounded-xl border border-gray-200 overflow-hidden group">
+          <summary class="px-6 py-4 font-semibold text-gray-900 cursor-pointer flex items-center justify-between list-none">
+            Can my crew use it from their phones?
+            <span class="text-yellow-500 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="px-6 pb-4 text-gray-600 text-sm leading-relaxed">
+            Yes. Adiron is fully mobile-responsive and works on any smartphone or tablet. Crew members can clock in/out, check job details, update their status, and submit suggestions — all from the job site.
+          </div>
+        </details>
+        <details class="bg-white rounded-xl border border-gray-200 overflow-hidden group">
+          <summary class="px-6 py-4 font-semibold text-gray-900 cursor-pointer flex items-center justify-between list-none">
+            Can I cancel anytime?
+            <span class="text-yellow-500 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="px-6 pb-4 text-gray-600 text-sm leading-relaxed">
+            Yes. There are no long-term contracts. You can cancel your subscription at any time from your account settings and you won't be charged again.
+          </div>
+        </details>
+        <details class="bg-white rounded-xl border border-gray-200 overflow-hidden group">
+          <summary class="px-6 py-4 font-semibold text-gray-900 cursor-pointer flex items-center justify-between list-none">
+            How do clients receive estimates and invoices?
+            <span class="text-yellow-500 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="px-6 pb-4 text-gray-600 text-sm leading-relaxed">
+            You send them with one click from inside the app. Your client gets a professional email with a link to view the estimate or invoice online. They can approve estimates, download PDFs, and you get notified immediately when they respond.
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="py-24 hero-gradient">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h2 class="text-4xl md:text-6xl font-black text-white mb-6">
+        Ready to run your business<br><span class="text-yellow-400">the right way?</span>
+      </h2>
+      <p class="text-xl text-gray-400 mb-10 max-w-2xl mx-auto">Join contractors across the US who use Adiron to manage their jobs, crew, and finances — all in one place.</p>
+      <a href="https://app.getadiron.com/accounts/register/"
+        class="inline-block bg-yellow-400 hover:bg-yellow-500 text-black font-bold text-xl px-10 py-5 rounded-2xl transition-colors yellow-glow">
+        Start Your Free Trial Today
+      </a>
+      <p class="text-gray-500 text-sm mt-4">14 days free · No credit card · Cancel anytime</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-gray-900 border-t border-gray-800 py-12">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
+        <div class="md:col-span-2">
+          <p class="text-yellow-400 font-bold text-2xl mb-3">Adiron</p>
+          <p class="text-gray-400 text-sm leading-relaxed max-w-sm">Field service management built for contractors. From first call to final invoice.</p>
+        </div>
+        <div>
+          <p class="text-white font-semibold text-sm mb-4">Product</p>
+          <ul class="space-y-2">
+            <li><a href="#features" class="text-gray-400 hover:text-white text-sm transition-colors">Features</a></li>
+            <li><a href="#pricing" class="text-gray-400 hover:text-white text-sm transition-colors">Pricing</a></li>
+            <li><a href="https://app.getadiron.com/accounts/register/" class="text-gray-400 hover:text-white text-sm transition-colors">Start Free Trial</a></li>
+            <li><a href="https://app.getadiron.com/login/" class="text-gray-400 hover:text-white text-sm transition-colors">Sign In</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-white font-semibold text-sm mb-4">Company</p>
+          <ul class="space-y-2">
+            <li><a href="mailto:hello@getadiron.com" class="text-gray-400 hover:text-white text-sm transition-colors">Contact</a></li>
+            <li><a href="/privacy" class="text-gray-400 hover:text-white text-sm transition-colors">Privacy Policy</a></li>
+            <li><a href="/terms" class="text-gray-400 hover:text-white text-sm transition-colors">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p class="text-gray-500 text-sm">© 2026 Adiron. All rights reserved.</p>
+        <p class="text-gray-600 text-sm">hello@getadiron.com</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    }
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          const offset = 80;
+          const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Nav background on scroll
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        nav.classList.add('shadow-lg');
+      } else {
+        nav.classList.remove('shadow-lg');
+      }
+    });
+  </script>
+
+</body>
+</html>
